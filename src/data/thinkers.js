@@ -283,6 +283,80 @@ const thinkers = [
   { name:'莫言', nameEn:'Mo Yan', birthYear:1955, era:'1955—', category:'诺贝尔奖得主', tradition:'中国文学', color:'#d4a017',
     entries:[
       { keywords:'讲故事,真相,文学,记忆,乡村,中国', topic:'讲故事的人', quote:'「文学最大的用处，也许就是它没有用处。」', insight:'文学的价值在于它的「无用」——它让你看到你自己，看到你一直逃避的那些真相。' }
+    ]},
+  { name:'韩非子', nameEn:'Han Feizi', birthYear:-280, era:'约前280—前233', category:'思想大成者', tradition:'法家', color:'#c0392b',
+    entries:[
+      { keywords:'权力,法律,制度,规则,管理,秩序', topic:'以法治国', quote:'「不期修古，不法常可，论世之事，因为之备。」', insight:'不要迷信古人和传统，根据当下的实际情况制定制度。法治优于人治，因为制度不会疲倦。' },
+      { keywords:'人性,利益,信任,自私', topic:'人性趋利', quote:'「人主之患在于信人，信人则制于人。」', insight:'不要用道德要求来管理人，要用利益机制来引导人。承认人性的自利，才能设计出有效的制度。' }
+    ]},
+  { name:'李白', nameEn:'Li Bai', birthYear:701, era:'701—762', category:'作家', tradition:'唐诗', color:'#d4a017',
+    entries:[
+      { keywords:'自由,束缚,理想,不羁,天性,反抗', topic:'天生我材', quote:'「天生我材必有用，千金散尽还复来。」', insight:'李白从不怀疑自己的价值。这不是盲目自信，而是一种根本性的存在姿态：我来到这个世界，就已经够了。' },
+      { keywords:'孤独,月亮,独处,饮酒,寂寞', topic:'举杯邀明月', quote:'「举杯邀明月，对影成三人。」', insight:'孤独到极致时，反而生出浪漫——月亮和影子都成了酒友。' }
+    ]},
+  { name:'朱熹', nameEn:'Zhu Xi', birthYear:1130, era:'1130—1200', category:'哲学家', tradition:'理学', color:'#d4a017',
+    entries:[
+      { keywords:'学习,读书,方法,知识,教育,思考', topic:'格物致知', quote:'「读书之法，在循序而渐进，熟读而精思。」', insight:'学习没有捷径——循序渐进、反复精读、深入思考，这套方法论八百年后依然有效。' },
+      { keywords:'欲望,天理,克制,修身,自律', topic:'存天理灭人欲', quote:'「饮食者，天理也；要求美味，人欲也。」', insight:'并非消灭一切欲望，而是区分合理需求和过度贪求。自律不是苦行，而是回归理性。' }
+    ]},
+  { name:'马基雅维利', nameEn:'Niccolò Machiavelli', birthYear:1469, era:'1469—1527', category:'思想大成者', tradition:'政治哲学', color:'#c0392b',
+    entries:[
+      { keywords:'权力,政治,手段,目的,领导', topic:'君主论', quote:'「被人畏惧比被人爱戴更安全。」', insight:'他不是在教你做坏人，而是在说：政治有自己的逻辑，用道德标准评判政治行为是天真的。' },
+      { keywords:'现实,理想,务实,真相,人性', topic:'现实主义', quote:'「人们实际怎样生活与人们应当怎样生活，距离如此之大。」', insight:'看清世界的真实运作方式，比抱怨它不该如此更有用。' }
+    ]},
+  { name:'斯宾诺莎', nameEn:'Baruch Spinoza', birthYear:1632, era:'1632—1677', category:'哲学家', tradition:'理性主义', color:'#2980b9',
+    entries:[
+      { keywords:'情绪,理性,自由,理解,克服', topic:'理解即自由', quote:'「不要哭，不要笑，要理解。」', insight:'当你理解了一种情绪的原因，它对你的控制力就减弱了。理解是通往自由的路。' }
+    ]},
+  { name:'牛顿', nameEn:'Isaac Newton', birthYear:1643, era:'1643—1727', category:'近代学者', tradition:'自然科学', color:'#27ae60',
+    entries:[
+      { keywords:'发现,站在巨人,学习,传承,谦虚', topic:'巨人的肩膀', quote:'「如果说我看得比别人更远些，那是因为我站在巨人的肩膀上。」', insight:'一切伟大发现都建立在前人的工作之上。真正的天才知道自己欠了多少债。' },
+      { keywords:'好奇,探索,宇宙,未知,科学', topic:'海边拾贝', quote:'「我好像是在海边玩耍的孩子，不时捡到一块光滑的石子，而真理的大海在我面前尚未被发现。」', insight:'人类所有的知识加起来，也只是真理海洋边上的几颗贝壳。' }
+    ]},
+  { name:'叔本华', nameEn:'Arthur Schopenhauer', birthYear:1788, era:'1788—1860', category:'哲学家', tradition:'悲观主义', color:'#8b6cc9',
+    entries:[
+      { keywords:'欲望,痛苦,满足,无聊,幸福', topic:'钟摆理论', quote:'「人生就像钟摆，在痛苦和无聊之间摆动。」', insight:'欲望未满足时痛苦，满足后又无聊——幸福永远在别处。除非你跳出这个钟摆。' },
+      { keywords:'孤独,独处,天才,社交,庸俗', topic:'独处的价值', quote:'「要么庸俗，要么孤独。」', insight:'对精神丰富的人来说，独处是享受；只有精神贫乏的人才害怕和自己待在一起。' }
+    ]},
+  { name:'曾国藩', nameEn:'Zeng Guofan', birthYear:1811, era:'1811—1872', category:'思想大成者', tradition:'晚清', color:'#d4a017',
+    entries:[
+      { keywords:'自律,坚持,习惯,勤奋,修身,日记', topic:'日课十二条', quote:'「天下古今之庸人，皆以一惰字致败。」', insight:'曾国藩资质平庸，靠的是日复一日的自律。他证明了笨功夫才是真功夫。' },
+      { keywords:'成功,失败,耐心,韧性,坚韧', topic:'屡败屡战', quote:'「打脱牙齿和血吞。」', insight:'输了不丢人，不认输才是本事。' }
+    ]},
+  { name:'克尔凯郭尔', nameEn:'Søren Kierkegaard', birthYear:1813, era:'1813—1855', category:'哲学家', tradition:'存在主义先驱', color:'#c0392b',
+    entries:[
+      { keywords:'焦虑,自由,可能性,选择,恐惧', topic:'焦虑是自由的眩晕', quote:'「焦虑是自由的眩晕。」', insight:'你之所以焦虑，是因为你面前有太多可能性。焦虑恰恰证明你是自由的。' },
+      { keywords:'人生,理解,回顾,前行,活着', topic:'向前活', quote:'「人生只能倒着理解，但必须正着活。」', insight:'你只有回头看才能理解过去，但你不能倒着走路。' }
+    ]},
+  { name:'马斯洛', nameEn:'Abraham Maslow', birthYear:1908, era:'1908—1970', category:'近代学者', tradition:'人本心理学', color:'#27ae60',
+    entries:[
+      { keywords:'需求,成长,自我实现,潜能,动力', topic:'需求层次', quote:'「一个人能成为什么，他就必须成为什么。」', insight:'吃饱了才会想意义，安全了才会想自由——但最终驱动人的，是成为自己的渴望。' },
+      { keywords:'高峰体验,幸福,心流,专注,超越', topic:'高峰体验', quote:'「几乎所有的高峰体验都有一个共同特征：时间感消失。」', insight:'全神贯注到忘记时间的那些时刻，就是你最接近自我实现的时刻。' }
+    ]},
+  { name:'查理·芒格', nameEn:'Charlie Munger', birthYear:1924, era:'1924—2023', category:'思想大成者', tradition:'跨学科思维', color:'#27ae60',
+    entries:[
+      { keywords:'思维,模型,学习,跨学科,智慧,认知', topic:'多元思维模型', quote:'「手里只有锤子的人，看什么都像钉子。」', insight:'掌握多个学科的核心模型，你就不会被单一视角困住。' },
+      { keywords:'错误,愚蠢,避免,逆向思维,反面', topic:'逆向思维', quote:'「如果我知道会死在哪里，那我就永远不去那个地方。」', insight:'与其研究如何成功，不如研究如何避免失败。逆向思考往往比正向思考更有效。' }
+    ]},
+  { name:'福柯', nameEn:'Michel Foucault', birthYear:1926, era:'1926—1984', category:'哲学家', tradition:'后结构主义', color:'#c0392b',
+    entries:[
+      { keywords:'权力,知识,话语,控制,规训,制度', topic:'权力无处不在', quote:'「权力无处不在，不是因为它支配一切，而是因为它来自四面八方。」', insight:'权力不只在政府手里，它在语言中、在知识中、在你认为理所当然的一切中。' },
+      { keywords:'正常,疯狂,标准,社会,边缘', topic:'谁定义正常', quote:'「疯狂不是自然事实，而是文明的产物。」', insight:'「正常」是被发明出来的。每个时代把不同的人关进不同的笼子。' }
+    ]},
+  { name:'稻盛和夫', nameEn:'Kazuo Inamori', birthYear:1932, era:'1932—2022', category:'思想大成者', tradition:'日本经营哲学', color:'#e67e22',
+    entries:[
+      { keywords:'工作,意义,热爱,努力,敬业,使命', topic:'工作即修行', quote:'「工作是最好的修行。」', insight:'工作不只是谋生手段，而是磨练灵魂的道场。全力以赴做好手头的事，本身就是一种修行。' },
+      { keywords:'成功,公式,态度,能力,思维方式', topic:'成功方程式', quote:'「人生·工作的结果 = 思维方式 × 热情 × 能力。」', insight:'能力和热情都是正数，但思维方式可以是负数。方向错了，越努力离目标越远。' }
+    ]},
+  { name:'霍金', nameEn:'Stephen Hawking', birthYear:1942, era:'1942—2018', category:'近代学者', tradition:'理论物理', color:'#27ae60',
+    entries:[
+      { keywords:'宇宙,存在,时间,起源,好奇', topic:'宇宙的意义', quote:'「记住要仰望星空，不要低头看脚下。」', insight:'被困在轮椅上的人让我们仰望星空。局限从来不是思想的边界。' },
+      { keywords:'生命,希望,残疾,坚强,态度', topic:'永不放弃', quote:'「无论生活多么艰难，总有你能做的事情并取得成功。」', insight:'他用自己的存在证明了这句话。' }
+    ]},
+  { name:'塔勒布', nameEn:'Nassim Nicholas Taleb', birthYear:1960, era:'1960—', category:'近代学者', tradition:'风险哲学', color:'#c0392b',
+    entries:[
+      { keywords:'风险,不确定性,黑天鹅,预测,意外', topic:'黑天鹅', quote:'「我们不知道的事情远比我们知道的更重要。」', insight:'改变历史的都是没人预料到的事。与其预测未来，不如让自己能承受意外。' },
+      { keywords:'脆弱,反脆弱,压力,成长,韧性', topic:'反脆弱', quote:'「风会熄灭蜡烛，却能使火越烧越旺。」', insight:'有些东西在压力下会变得更强——这不是韧性，而是「反脆弱」。关键是让自己成为火而非蜡烛。' }
     ]}
 ];
 
