@@ -19,22 +19,27 @@ function groupByEra(results) {
   return groups;
 }
 
-export default function Timeline({ results, query, onThinkerClick }) {
-  if (!results.length) {
+export default function Timeline({ results, query, onThinkerClick, label, isAI }) {
+  if (!results.length && !label) {
     return (
       <div className="timeline-empty">
         <p>没有找到与「{query}」相关的思想。</p>
-        <p>试试其他关键词？</p>
+        <p>等待 AI 搜索更广阔的思想世界…</p>
       </div>
     );
   }
 
+  if (!results.length) return null;
+
   const groups = groupByEra(results);
 
   return (
-    <div className="timeline">
+    <div className={`timeline ${isAI ? 'timeline-ai' : ''}`}>
       <div className="timeline-header">
-        <h2>跨越时空的对话</h2>
+        <h2>
+          {label || '跨越时空的对话'}
+          {isAI && <span className="ai-badge">AI</span>}
+        </h2>
         <span className="result-count">{results.length} 位思想者的回应</span>
       </div>
       <div className="timeline-line">

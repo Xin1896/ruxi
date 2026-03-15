@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import SearchBar from './components/SearchBar';
 import TopicTags from './components/TopicTags';
 import Timeline from './components/Timeline';
@@ -11,20 +11,73 @@ import './App.css';
 
 const tags = getAllTags();
 
+async function fetchAIResults(query) {
+  const res = await fetch('/api/search', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query }),
+  });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return (data.results || []).map(r => ({
+    thinker: {
+      name: r.name,
+      nameEn: r.nameEn,
+      birthYear: r.birthYear,
+      era: r.era,
+      category: r.category,
+      tradition: r.tradition,
+      color: r.color,
+    },
+    entry: { topic: r.topic, quote: r.quote, insight: r.insight, keywords: '' },
+    score: 0,
+    isAI: true,
+  }));
+}
+
 export default function App() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
+  const [localResults, setLocalResults] = useState([]);
+  const [aiResults, setAiResults] = useState([]);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [selectedThinker, setSelectedThinker] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
+  const aiRequestId = useRef(0);
 
   const handleSearch = useCallback((q) => {
     setQuery(q);
     if (q.trim()) {
-      setResults(searchThinkers(q));
+      const local = searchThinkers(q);
+      setLocalResults(local);
       setHasSearched(true);
+
+      // Also fire AI search
+      const requestId = ++aiRequestId.current;
+      setAiResults([]);
+      setAiLoading(true);
+      setAiError(null);
+      fetchAIResults(q)
+        .then(results => {
+          if (aiRequestId.current === requestId) {
+            // Deduplicate: remove AI results whose thinker name already appears in local
+            const localNames = new Set(local.map(r => r.thinker.name));
+            setAiResults(results.filter(r => !localNames.has(r.thinker.name)));
+            setAiLoading(false);
+          }
+        })
+        .catch(() => {
+          if (aiRequestId.current === requestId) {
+            setAiError('AI 搜索暂不可用');
+            setAiLoading(false);
+          }
+        });
     } else {
-      setResults([]);
+      setLocalResults([]);
+      setAiResults([]);
+      setAiLoading(false);
+      setAiError(null);
       setHasSearched(false);
     }
   }, []);
@@ -61,7 +114,30 @@ export default function App() {
 
       <main className="main">
         {hasSearched ? (
-          <Timeline results={results} query={query} onThinkerClick={handleThinkerClick} />
+          <>
+            <Timeline
+              results={localResults}
+              query={query}
+              onThinkerClick={handleThinkerClick}
+              label={localResults.length > 0 ? '本地思想库' : null}
+            />
+            {aiLoading && (
+              <div className="ai-loading">
+                <div className="ai-spinner" />
+                <span>正在向更广阔的思想世界搜索…</span>
+              </div>
+            )}
+            {aiError && <div className="ai-error">{aiError}</div>}
+            {aiResults.length > 0 && (
+              <Timeline
+                results={aiResults}
+                query={query}
+                onThinkerClick={handleThinkerClick}
+                label="AI 探索 · 来自更广阔的思想世界"
+                isAI
+              />
+            )}
+          </>
         ) : (
           <QuestionsGrid questions={questions} onQuestionClick={handleQuestionClick} />
         )}

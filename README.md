@@ -31,7 +31,8 @@
 ## 技术栈
 
 - **React 19** + **Vite 6** — 轻量快速
-- 纯前端，无后端依赖，本地即可运行
+- **Vercel Serverless Functions** — 后端 API 调用
+- **Google Gemini API** — AI 扩展搜索，突破本地数据库限制
 - 中文输入法安全（`compositionstart` / `compositionend` 事件处理）
 
 ## 快速开始
@@ -43,11 +44,20 @@ npm install
 npm run dev
 ```
 
-打开 `http://localhost:5173` 即可使用。
+打开 `http://localhost:5173` 即可使用（本地搜索功能完整可用）。
+
+### 部署到 Vercel（启用 AI 搜索）
+
+1. Fork 本仓库
+2. 在 [Vercel](https://vercel.com) 导入项目
+3. 在 Vercel 项目设置中添加环境变量：`GEMINI_API_KEY`（[免费申请](https://aistudio.google.com/apikey)）
+4. 部署完成后，搜索将同时返回本地结果和 AI 生成的扩展结果
 
 ## 项目结构
 
 ```
+api/
+└── search.js               # Vercel serverless（Gemini AI 搜索）
 src/
 ├── components/
 │   ├── SearchBar.jsx        # 搜索栏（IME 安全）
