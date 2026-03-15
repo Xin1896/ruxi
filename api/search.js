@@ -11,9 +11,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing query' });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.KIMI_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: 'GEMINI_API_KEY not configured' });
+    return res.status(500).json({ error: 'KIMI_API_KEY not configured' });
   }
 
   const prompt = `你是一个人文思想数据库。用户搜索了关键词：「${query}」
@@ -44,29 +44,30 @@ export default async function handler(req, res) {
 ]`;
 
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 2048,
-          },
-        }),
-      }
-    );
+    const response = await fetch('https://api.moonshot.cn/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: 'moonshot-v1-8k',
+        messages: [
+          { role: 'system', content: '你是一个人文思想数据库，严格按用户要求的 JSON 格式返回结果，不要添加任何其他文字。' },
+          { role: 'user', content: prompt },
+        ],
+        temperature: 0.7,
+      }),
+    });
 
     if (!response.ok) {
       const err = await response.text();
-      console.error('Gemini API error:', err);
+      console.error('Kimi API error:', err);
       return res.status(502).json({ error: 'AI service error' });
     }
 
     const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const text = data.choices?.[0]?.message?.content || '';
 
     // Extract JSON from response (handle markdown code blocks)
     const jsonMatch = text.match(/\[[\s\S]*\]/);
